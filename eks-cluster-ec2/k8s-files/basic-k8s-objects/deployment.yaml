@@ -1,0 +1,73 @@
+### Rolling update STrategy
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  myapp
+  namespace: application
+  labels:
+    app: myapp
+    run: nginx
+    type: frontend
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+      run: nginx
+      type: frontend
+  replicas: 5
+  strategy:
+    rollingUpdate:
+      maxSurge: 2 #25%
+      maxUnavailable: 2 #25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: myapp
+        run: nginx
+        type: frontend
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  myapp
+        image: nginx:perl
+        ports:
+          - containerPort: 80
+            name:  http
+        resources:
+          requests:
+            cpu: 500m
+            memory: 200Mi
+          limits:
+            cpu: 1000m
+            memory: 500Mi
+        
+
+# --- 
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: jjtech-pod
+#   namespace: application
+#   labels:
+#     app: myapp
+#     run: nginx
+# spec:
+#   containers:
+#   - name: myapp
+#     image: nginx
+#     resources:
+#       limits:
+#         cpu: 200m
+#         memory: 500Mi
+#       requests:
+#         cpu: 100m
+#         memory: 200Mi
+#     ports:
+#     - containerPort:  80
+#       name:  http
+        
