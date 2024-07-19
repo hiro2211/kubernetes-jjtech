@@ -60,11 +60,16 @@ Now that you have successfully logged in to ArgoCd, lets create a new app.
 - Click on sync and select name of application created in previous step and sync the app to your ek cluster.
 
 # 7. Access the app on the uI
-Navigate to your terminal  and run 
+- Navigate to your terminal  and run 
 
 ```
 kubectl get svc
 ```
+- Patch the service to expose the app using a ALB endpoint
+```
+kubectl patch svc guestbook-ui -n default -p '{"spec": {"type": "LoadBalancer"}}
+```
+
 
 This will display all services availabe in the default namespace.
 
