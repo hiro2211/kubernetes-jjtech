@@ -52,7 +52,7 @@ argocd admin initial-password -n argocd
 # 5. Creating apps via UI
 Now that you have successfully logged in to ArgoCd, lets create a new app.
 - Click on **+ New App** and provide name to your app. Use the default project and leave sync policy as ***Manual***
-- Connect the https://github.com/argoproj/argocd-example-apps.git repo to Argo CD by setting repository url to the github repo url, leave revision as ***HEAD***, and set the path to ***guestbook***
+- Connect the ***YOUR REPOSITORY URL*** repo to Argo CD by setting repository url to the github repo url, leave revision as ***HEAD***, and set the path to ***argo-guestbook-test-app***
 - For Destination, set cluster URL to https://kubernetes.default.svc (or in-cluster for cluster name) and namespace to ***default***
 - After filling out the information, click **Create** at the top of the UI to create the application
   
@@ -68,5 +68,13 @@ kubectl get svc
 
 This will display all services availabe in the default namespace.
 
-# 8. Update k8s manifest for application in gih=thub and push changes
+# 8. Update k8s manifest for application in gihthub and push changes
+- Navigate to the  ***argo-guestbook-test-app*** folder and open the ***guestbook-ui.yaml*** file 
+- update replica from **1 to 3**
+- Push changes back to github
+```
+git add .
+git commit -m "modified deployment replicas"
+git push
+```
 
