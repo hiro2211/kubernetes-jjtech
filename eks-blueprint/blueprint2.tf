@@ -99,7 +99,7 @@ module "eks_cluster" {
     cluster-admin1 = {
 
       kubernetes_groups = ["admins"]
-      principal_arn     = "arn:aws:iam::389029577690:user/developer" #module.development_team.iam_role_arn
+      principal_arn     = "arn:aws:iam::389029577690:user/kingsley"  #development_team.iam_role_arn
       policy_associations = {
         cluster-admin = {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
@@ -131,22 +131,22 @@ module "eks_cluster" {
     },
 
 
-    cluster-admin3 = {
+    # cluster-admin3 = {
 
-      kubernetes_groups = ["admin"]
-      principal_arn     = "arn:aws:iam::389029577690:user/kingsley" #module.development_team.iam_role_arn
-      policy_associations = {
-        cluster-admin = {
-          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-            access_scope = {  
-              namespaces = ["default", "innov-namespace"]
-              type       = "namespace"
+    #   kubernetes_groups = ["admin"]
+    #   principal_arn     = "arn:aws:iam::389029577690:user/kingsley" #module.development_team.iam_role_arn
+    #   policy_associations = {
+    #     cluster-admin = {
+    #       policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+    #         access_scope = {  
+    #           namespaces = ["default", "innov-namespace"]
+    #           type       = "namespace"
 
-            }
-        }
-      }
+    #         }
+    #     }
+    #   }
 
-    },
+    # },
 
   }
 
