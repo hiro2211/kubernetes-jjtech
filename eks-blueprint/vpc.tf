@@ -12,12 +12,7 @@ module "vpc" {
   enable_nat_gateway = true
   single_nat_gateway = true
   enable_vpn_gateway = true
-<<<<<<< HEAD
   create_igw         = true
-
-=======
->>>>>>> 86dfff0390cdc6aa02861ed07646c536edd36375
-
   enable_dns_hostnames = true
   enable_dns_support   = true
 
@@ -36,53 +31,3 @@ module "vpc" {
     Environment = "dev"
   }
 }
-
-
-# # Get datasource for VPC
-# data "aws_vpc" "vpc" {
-#   filter {
-#     name   = "tag:Name"
-#     values = ["Sandbox-Template"]
-#   }
-
-#   # Add more filters if needed
-# }
-
-# data "aws_subnets" "public_subnets" {
-#   filter {
-#     name   = "tag:Name"
-#     values = ["Network-SandboxNat-A", "Network-SandboxNat-B"]
-#   }
-
-# }
-
-# data "aws_subnets" "private_subnets" {
-#   filter {
-#     name   = "tag:Name"
-#     values = ["Network-Sandbox-A", "Network-Sandbox-B"]
-#   }
-
-# }
-
-
-# # resource "aws_subnet" "tagged_public_subnets" {
-# #   for_each = toset(data.aws_subnets.public_subnets.ids)
-
-# #   vpc_id = data.aws_vpcs.vpcs.id
-
-# #   tags = {
-# #     "kubernetes.io/role/elb"           = "1"
-# #     "kubernetes.io/cluster/${var.cluster_name}" = "owned"
-# #   }
-# # }
-
-# # resource "aws_subnet" "tagged_private_subnets" {
-# #   for_each = toset(data.aws_subnets.private_subnets.ids)
-
-# #   vpc_id = data.aws_vpcs.vpcs.id
-
-# #   tags = {
-# #     "kubernetes.io/role/internal-elb"           = "1"
-# #     "kubernetes.io/cluster/${var.cluster_name}" = "owned"
-# #   }
-# # }
