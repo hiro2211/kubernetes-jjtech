@@ -11,9 +11,9 @@ k get po -n application --show-labels # show lables for pods
 
 k get po -o wide # to get list of nodes on which pods are deployed
 
-aws eks update-kubeconfig --name jjtech-demo-cluster --region us-east-1
+aws eks update-kubeconfig --name jjtech-demo-cluster --region us-east-1  # to update kubeconfig
 
-kubectl create ns tower
+kubectl create ns tower  # To create namespace
 
 kubectl api-resources  # To get all api resources i.e their NAME, SHORTNAMES, APIVERSION, NAMESPACED, KIND
 

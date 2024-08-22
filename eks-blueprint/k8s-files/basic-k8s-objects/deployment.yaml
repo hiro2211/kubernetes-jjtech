@@ -4,7 +4,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name:  myapp
-  namespace: application
   labels:
     app: myapp
     run: nginx
@@ -72,26 +71,26 @@ spec:
 #       name:  http
 #     - containerPort:  443
 #       name:  https  
---- 
+# --- 
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: MYAPP
-  namespace: default
-spec:
-  selector:
-    app: MYAPP
-  type: ClusterIP
-  sessionAffinity: None
-  sessionAffinityConfig:
-    clientIP:
-      timeoutSeconds: 10800
-  ports:
-  - name: MYAPP
-    protocol: TCP
-    port: 
-    targetPort: 
-    # If you set the `spec.type` field to `NodePort` and you want a specific port number,
-    # you can specify a value in the `spec.ports[*].nodePort` field.
-    nodePort: 
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: MYAPP
+#   namespace: default
+# spec:
+#   selector:
+#     app: MYAPP
+#   type: ClusterIP
+#   sessionAffinity: None
+#   sessionAffinityConfig:
+#     clientIP:
+#       timeoutSeconds: 10800
+#   ports:
+#   - name: MYAPP
+#     protocol: TCP
+#     port: 
+#     targetPort: 
+#     # If you set the `spec.type` field to `NodePort` and you want a specific port number,
+#     # you can specify a value in the `spec.ports[*].nodePort` field.
+#     nodePort: 

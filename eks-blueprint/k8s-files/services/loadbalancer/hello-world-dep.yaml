@@ -5,15 +5,17 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: helloworld
+      apps: helloworld
   replicas: 5 # tells deployment to run 1 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
       labels:
-        app: helloworld
+        apps: helloworld
     spec:
       containers:
       - name: helloworld
         image: nginx
         ports:
-        - containerPort: 80
+        - name: http
+          containerPort: 80
+        

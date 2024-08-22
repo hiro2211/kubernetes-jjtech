@@ -7,9 +7,10 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - name: http
-    port: 80
-    targetPort: http
+  - port: 80
+    targetPort: 80
+    protocol: TCP
   selector:
-    app: my-app
+    apps: helloworld 
+    
     
